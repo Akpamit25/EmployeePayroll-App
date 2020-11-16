@@ -19,7 +19,7 @@
         </div>
       </div>
     </header>
-
+      <!-- UC-2 -->
     <div class="form-content">
         <form class="form" action="#" onsubmit="save();return false">
           <div class="form-head">Employee Payroll form</div>
@@ -28,7 +28,7 @@
             <label class="label text" for="name">Name</label>
             <input class="input" type="text" name="name" id="name" placeholder="Your Name" required>
           </div>
-
+           <!-- UC-3 -->
           <div class="row-content">
             <label class="label text">Profile image</label>
             <div class="profile-radio-content">
@@ -54,6 +54,7 @@
               </label>
             </div>
           </div>
+          <!-- UC-4 -->
           <div class="row-content">
             <label class="label text" for="gender">Gender</label>
             <div>
@@ -84,6 +85,7 @@
                    min="300000" max="500000" step="100" value="400000">
             <output class="salary-output text" for="salary">400000</output>
           </div>
+          <!-- UC-5 -->
           <div class="row-content">
             <label class="label text" for="startDate">Start Date</label>
             <div>
@@ -141,6 +143,18 @@
                 <option value="2017">2017</option>
                 <option value="2016">2016</option>
               </select>
+            </div>
+          </div>
+          <!-- UC-6 -->
+          <div class="row-content">
+            <label class="label text" for="notes">Notes</label>
+            <textarea class="input" id="notes" name="Notes" style="height: 100px;"></textarea>
+          </div>
+          <div class="buttonParent">
+            <a href="./payroll_form.html" class="resetButton button cancelButton">Cancel</a>
+            <div class="submit-reset">
+              <button type="submit" class="button submitButton" id="submitButton">Submit</button>
+              <button type="reset" class="resetButton button">Reset</button>
             </div>
           </div>
         </form>
