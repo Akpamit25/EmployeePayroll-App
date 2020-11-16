@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Day37-38-Employee-Payroll-App-JsonServer/css/employee_form.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script defer src ="/Day37-38-Employee-Payroll-App-JsonServer/js/employee_form.js"></scriptdefer></script>
-    <script src="../js/EmployeePayroll.js"></script>
+    <script defer src ="/Day37-38-Employee-Payroll-App-JsonServer/js/employee_form.js"></script>
+    <script defer src="/Day37-38-Employee-Payroll-App-JsonServer/js/EmployeePayRollData.js"></script>
 
     <title>Employee Payroll App</title>
 </head>
@@ -29,6 +29,8 @@
           <div class="row-content">
             <label class="label text" for="name">Name</label>
             <input class="input" type="text" name="name" id="name" placeholder="Your Name" required>
+            <error-output class="text-error" for="text"></error-output>
+
           </div>
            <!-- UC-3 -->
           <div class="row-content">
@@ -153,7 +155,7 @@
             <textarea class="input" id="notes" name="Notes" style="height: 100px;"></textarea>
           </div>
           <div class="buttonParent">
-            <a href="./payroll_form.html" class="resetButton button cancelButton">Cancel</a>
+            <a href="./employee_form.html" class="resetButton button cancelButton">Cancel</a>
             <div class="submit-reset">
               <button type="submit" class="button submitButton" id="submitButton">Submit</button>
               <button type="reset" class="resetButton button">Reset</button>
