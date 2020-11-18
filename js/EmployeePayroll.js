@@ -1,4 +1,4 @@
-class EmployeePayroll {
+class EmployeePayrollData {
 
     //Getters & Setters
     get id() {

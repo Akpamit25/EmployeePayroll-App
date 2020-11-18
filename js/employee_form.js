@@ -7,12 +7,20 @@ window.addEventListener("DOMContentLoaded", (event) => {
         return;
       }
       try {
-        new EmployeePayroll().name = name.value;
+        new EmployeePayrollData().name = name.value;
         textError.textContent = "";
       } catch (e) {
         textError.textContent = e;
       }
     });
+    
+    const salary = document.querySelector("#salary");
+    const output = document.querySelector(".salary-output");
+    output.textContent = salary.value;
+    salary.addEventListener("input", function () {
+      output.textContent = salary.value;
+    });
+
     const startdate = document.querySelector("#startdate");
     const day = document.querySelector("#day");
     const month = document.querySelector("#month");
@@ -20,19 +28,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const dateError = document.querySelector(".date-error");
     startdate.addEventListener("input", function () {
       try {
-        new EmployeePayroll().startDate = new Date(
+        new EmployeePayrollData().startDate = new Date(
           Date.UTC(year.value, month.value - 1, day.value)
         );
         dateError.textContent = "";
       } catch (e) {
         dateError.textContent = e;
       }
-    });
-  
-    const salary = document.querySelector("#salary");
-    const output = document.querySelector(".salary-output");
-    output.textContent = salary.value;
-    salary.addEventListener("input", function () {
-      output.textContent = salary.value;
     });
   });
