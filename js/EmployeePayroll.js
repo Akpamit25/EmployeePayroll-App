@@ -52,20 +52,21 @@ class EmployeePayrollData {
         return this._startDate;
     }
     set startDate(startDate) {
-        if (startDate < new Date()) {
-            this._startDate = startDate;
-        }
-        else {
+        let now = new Date();
+        if (startDate > now)
             throw 'Date is Invalid !';
-        }
+        var diff = Math.abs(now.getTime() - startDate.getTime());
+        if (diff / (1000 * 60 * 60 * 24) > 30)
+            throw 'Start Date Is Beyond 30 Days !';
+        this._startDate = startDate;
     }
 
-    //Methods
+    //Method
     toString() {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const empDate = !this.startDate ? "Undefined" : this.startDate.toLocaleDateString("en-US", options);
-        return "id : " + this.id + " Name : " + this.name + " Gender : " + this.gender + " Profile Pic : "
-            + this.profilePic + " Department : " + this.department + " Salary : " + this.salary + " Start Date : " + empDate
-            + " Notes : " + this.note;
+        return "id : " + this.id + " Name : " + this.name + " Gender : " + this.gender + " Profile Pic : " +
+            this.profilePic + " Department : " + this.department + " Salary : " + this.salary + " Start Date : " + empDate +
+            " Notes : " + this.note;
     }
 }
