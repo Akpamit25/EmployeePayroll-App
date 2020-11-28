@@ -39,19 +39,38 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 });
 
-const save = (event) => {
+const save = () => {
     let employeePayrollData;
     try {
         employeePayrollData = createEmployeePayroll();
+        createAndUpdateStorage(employeePayrollData);
     } catch (e) {
         console.log(e);
         return;
     }
 }
 
+function createAndUpdateStorage(empData) {
+    let empList = JSON.parse(localStorage.getItem("empList"));
+    if (empList != undefined) {
+        empList.push(empData);
+    } else {
+        empList = [empData];
+    }
+    alert(empList.toString());
+    localStorage.setItem("empList", JSON.stringify(empList));
+}
+
+
 const createEmployeePayroll = () => {
     let employeePayrollData = new EmployeePayrollData();
+    try {
         employeePayrollData.name = getInputValueById('#name');
+    } catch (e) {
+        setTextValue('.text-error', e);
+        throw e;
+    }
+        // employeePayrollData.name = getInputValueById('#name');
 
     employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
     employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
@@ -94,4 +113,31 @@ the browsers.
 const getInputElementValue = (id) => {
     let value = document.getElementById(id).value;
     return value;
+}
+
+const resetForm = () => {
+    setValue('#name', '');
+    unsetSelectedValues('[name=profile]');
+    unsetSelectedValues('[name=gender]');
+    unsetSelectedValues('[name=department]');
+    resetSalary('#salary', '');
+    setValue('#notes', '');
+    setValue('#day', '1');
+    setValue('#month', 'January');
+    setValue('#year', '2020');
+}
+const unsetSelectedValues = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    allItems.forEach(item => {
+        item.checked = false;
+    });
+}
+const setValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.value = value;
+}
+
+const setTextValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.textContent = value;
 }
