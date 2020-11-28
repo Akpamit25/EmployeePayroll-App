@@ -25,7 +25,7 @@
     </header>
     <!-- UC-2 -->
     <div class="form-content" id="formId">
-        <form class="form" action="#" onsubmit="save()">
+        <form class="form" action="#" onsubmit="save(event); return false" onreset="resetForm()">
             <div class="form-head">Employee Payroll form</div>
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
@@ -139,18 +139,18 @@
             <option value="31">31</option>
           </select>
                     <select id="month" name="month">
-            <option value="1">January</option>
-            <option value="2">February</option>
-            <option value="3">March</option>
-            <option value="4">April</option>
-            <option value="5">May</option>
-            <option value="6">June</option>
-            <option value="7">July</option>
-            <option value="8">August</option>
-            <option value="9">September</option>
-            <option value="10">October</option>
-            <option value="11" selected>November</option>
-            <option value="12">December</option>
+            <option value="Jan">January</option>
+            <option value="Feb">February</option>
+            <option value="Mar">March</option>
+            <option value="Apr">April</option>
+            <option value="May">May</option>
+            <option value="Jun">June</option>
+            <option value="Jul">July</option>
+            <option value="Aug">August</option>
+            <option value="Sep">September</option>
+            <option value="Oct">October</option>
+            <option value="Nov" selected>November</option>
+            <option value="Dec">December</option>
           </select>
                     <select id="year" name="year">
             <option value="2020" selected`>2020</option>
