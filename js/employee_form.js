@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", (event) => {
     const name = document.querySelector("#name");
     const textError = document.querySelector(".text-error");
     name.addEventListener("input", function() {
@@ -39,47 +39,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
 });
 
-const save = () => {
+const save = (event) => {
     let employeePayrollData;
     try {
         employeePayrollData = createEmployeePayroll();
-        createAndUpdateStorage(employeePayrollData);
     } catch (e) {
         console.log(e);
         return;
     }
 }
 
-function createAndUpdateStorage(empData) {
-    let empList = JSON.parse(localStorage.getItem("empList"));
-    if (empList != undefined) {
-        empList.push(empData);
-    } else {
-        empList = [empData];
-    }
-    alert(empList.toString());
-    localStorage.setItem("empList", JSON.stringify(empList));
-}
-
 const createEmployeePayroll = () => {
     let employeePayrollData = new EmployeePayrollData();
-    try {
         employeePayrollData.name = getInputValueById('#name');
-    } catch (e) {
-        setTextValue('.text-error', e);
-        throw e;
-    }
-    // let employeePayrollData = new EmployeePayRollData();
-    // employeePayrollData.name = getInputValueById('#name');
+
     employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
     employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
     employeePayrollData.department = getSelectedValues('[name=department]');
     employeePayrollData.salary = getInputValueById('#salary');
     employeePayrollData.note = getInputValueById('#notes');
     let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " + getInputValueById('#year');
-    employeePayrollData.date = Date.parse(date);
-    // employeePayrollData.startDate = new Date(Date.UTC
-    //     (getInputValueById('#year'), getInputValueById('#month') - 1, getInputValueById('#day')));
+    employeePayrollData.startDate = new Date(date);
+    console.log(date);
     alert(employeePayrollData.toString());
     // alert("Welcome");
     return employeePayrollData;
@@ -89,7 +70,8 @@ const getSelectedValues = (propertyValue) => {
     let allItems = document.querySelectorAll(propertyValue);
     let selItems = [];
     allItems.forEach(item => {
-        if (item.checked) selItems.push(item.value);
+        if (item.checked)
+            selItems.push(item.value);
     });
     return selItems;
 }
@@ -112,31 +94,4 @@ the browsers.
 const getInputElementValue = (id) => {
     let value = document.getElementById(id).value;
     return value;
-}
-
-const resetForm = () => {
-    setValue('#name', '');
-    unsetSelectedValues('[name=profile]');
-    unsetSelectedValues('[name=gender]');
-    unsetSelectedValues('[name=department]');
-    resetSalary('#salary', '');
-    setValue('#notes', '');
-    setValue('#day', '1');
-    setValue('#month', 'January');
-    setValue('#year', '2020');
-}
-const unsetSelectedValues = (propertyValue) => {
-    let allItems = document.querySelectorAll(propertyValue);
-    allItems.forEach(item => {
-        item.checked = false;
-    });
-}
-const setValue = (id, value) => {
-    const element = document.querySelector(id);
-    element.value = value;
-}
-
-const setTextValue = (id, value) => {
-    const element = document.querySelector(id);
-    element.textContent = value;
 }
