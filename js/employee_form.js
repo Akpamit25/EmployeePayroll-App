@@ -140,4 +140,4 @@ const setValue = (id, value) => {
 const setTextValue = (id, value) => {
     const element = document.querySelector(id);
     element.textContent = value;
-}
+}/* */
